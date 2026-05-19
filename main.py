@@ -45,15 +45,16 @@ def registrar_dia():        #registra o dia ja no dicionario json
     dicionario = como_esta_se_sentido()
     carregar.append(dicionario)
     salvar_registros(carregar)
-    limpar_terminal()
+    print('\n')
     
 
 def listar_historico():     #mostra todo o historico de registros
     for i in carregar_arquivo_json():
         print(f'📅 Data:{i['Data']}\n💭 Como estava:{i['Sentimento']}\n⭐ Nota:{i['Humor']}\n🎵 Música do dia:{i['Musica']} - {i['Artista']}\n─────────────────\n')
-    limpar_terminal()
+
 
 def relatorio_mes(): #faz um relatorio filtrando as informações
+    print('\n')
     lista = carregar_arquivo_json()
     print(f'Total de dias registrados: {len(lista)} dias!')
     humor_soma = 0
@@ -76,14 +77,8 @@ def relatorio_mes(): #faz um relatorio filtrando as informações
         print(f'📅 Seu melhor dia foi: {maior_humor['Data']}\n🎵 Música: {maior_humor['Musica']} - {maior_humor['Artista']}\n⭐ Nota: {maior_humor['Humor']}\n💭 Sentimento: {maior_humor['Sentimento']}')
     else:
         print('Sem registros ainda!')
-    limpar_terminal()
+    print('\n \n')
 
-
-def limpar_terminal(): #função usada para limpar terminal apos o uso de alguma funcao
-    if os.name == 'nt':
-        os.system('cls')
-    else:
-        os.system('clear')
 
 def menu():  #menu de escolha das opções
     while True:
@@ -98,23 +93,22 @@ Qual opção você deseja?
             opcao = int(input('Digite a opção que você deseja: '))
             match opcao:
                 case 1:
-                    print('Você escolheu Registrar o dia de hoje!')
+                    print('\nVocê escolheu Registrar o dia de hoje!')
                     registrar_dia()
                 case 2:
-                    print('você escolheu Ver histórico!')
+                    print('\nvocê escolheu Ver histórico!')
                     listar_historico()
                 case 3:
-                    print('Você escolheu Ver relatório do mês!')
+                    print('\nVocê escolheu Ver relatório do mês!')
                     relatorio_mes()
                 case 4:
-                    print('App finalizado')
-                    limpar_terminal()
+                    print('\nApp finalizado')
                     break
                 case _:
-                    print('Opção inválida!')
+                    print('\nOpção inválida!')
                     continue
         except ValueError:
-            print('Erro! Opção inválida!')
+            print('\nErro! Opção inválida!')
             continue
         
 

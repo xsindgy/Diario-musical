@@ -8,39 +8,44 @@ Um projeto feito em **Python puro** — sem frameworks, sem dependências extern
 
 ## 💡 Sobre o projeto
 
-A ideia surgiu de uma pergunta simples: _e se eu pudesse olhar pra trás e ver exatamente o que eu estava ouvindo nos meus dias mais difíceis — ou nos melhores?_
+A ideia surgiu de uma pergunta simples: *e se eu pudesse olhar pra trás e ver exatamente o que eu estava ouvindo nos meus dias mais difíceis — ou nos melhores?*
 
 O Diário Musical permite registrar uma entrada por dia com sua música mais ouvida, seu estado emocional e uma nota de humor. No fim do mês, o programa gera um relatório com média de humor, músicas mais ouvidas e o melhor dia registrado.
 
 ---
 
-## 🖥️ Como funciona
+## 🖥️ Demo
 
 ### Menu principal
 
-![Menu principal](https://raw.githubusercontent.com/xsindgy/Diario-musical/main/menu.png)
+![Menu principal](https://raw.githubusercontent.com/xsindgy/Diario-musical/main/demo_menu.png)
 
 O programa roda no terminal com um menu interativo. O usuário navega pelas opções digitando o número correspondente. O `match/case` (Python 3.10+) garante um fluxo limpo e legível.
 
 ---
 
-### Coleta de dados
+### Histórico de registros
 
+![Histórico](https://raw.githubusercontent.com/xsindgy/Diario-musical/main/demo_historico.png)
+
+Cada entrada exibe data, sentimento, nota e música do dia formatados com emojis e separadores visuais.
+
+---
+
+## 🔍 Por dentro do código
+
+### Coleta de dados
 ![Coleta de dados](https://raw.githubusercontent.com/xsindgy/Diario-musical/main/coleta_dados.png)
 
 A função `como_esta_se_sentido()` coleta os dados do usuário com validação robusta:
-
 - Usa `while True` + `try/except` para garantir que a nota seja sempre um número válido entre 0 e 5
 - Usa **f-string** para confirmar o artista da música digitada, reduzindo erros de associação
 - Retorna um dicionário completo com data, sentimento, nota, música e artista
 
----
-
 ### Persistência em JSON
+![Carregar e salvar](https://raw.githubusercontent.com/xsindgy/Diario-musical/main/carregar_arquivo.png)
 
-![Carregar arquivo](https://raw.githubusercontent.com/xsindgy/Diario-musical/main/carregar_arquivo.png)
 Os dados são salvos localmente num arquivo `dicionario_humor.json` como uma lista de dicionários:
-
 - `carregar_arquivo_json()` trata o caso do arquivo não existir ainda com `FileNotFoundError`
 - `salvar_registros()` sobrescreve o arquivo com a lista atualizada a cada novo registro
 - `registrar_dia()` orquestra todo o fluxo: carregar → coletar → adicionar → salvar
@@ -60,7 +65,7 @@ Os dados são salvos localmente num arquivo `dicionario_humor.json` como uma lis
 
 ```
 diario_musical/
-├── main.py              ← código principal
+├── main.py                ← código principal
 └── dicionario_humor.json  ← gerado automaticamente no primeiro uso
 ```
 
@@ -72,10 +77,10 @@ diario_musical/
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/diario-musical.git
+git clone https://github.com/xsindgy/Diario-musical.git
 
 # Entre na pasta
-cd diario-musical
+cd Diario-musical
 
 # Rode o programa
 python main.py
